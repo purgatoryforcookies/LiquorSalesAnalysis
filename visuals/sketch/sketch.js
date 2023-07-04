@@ -18,10 +18,6 @@ const settings = {
 
 const graph = new Graph()
 
-// console.log(data)
-
-// console.log(data.map(item=>item.Score))
-
 let baseRadius = 150
 const additional_layer_gap = 130
 
@@ -38,8 +34,6 @@ const sketch = ({ context, width, height }) => {
     let x = Math.cos(angle*i)*circleRadius+(width/2);
     let y =  Math.sin(angle*i)*circleRadius+(height/2);
     const radius = 10
-    // console.log(item.Score);
-    // const score = math.mapRange(item.Score, 0.9748, 0.9877, 0.1, 1)
     const score = mapLineWidth(item.Score, data)
     const name = item.alc_2_title
 
@@ -110,53 +104,13 @@ const sketch = ({ context, width, height }) => {
 
         }
         parent.draw(context)
-        // parent.update()
-        // parent.bounce()
       })
-
-      // context.save();
-      // context.translate(width/2, height/2);
-      // context.lineWidth = 0.15;
-      // context.strokeStyle = '#ffffff';
-      // context.setLineDash([5])
-      // context.beginPath();
-      // context.arc(0, 0, baseRadius,0,Math.PI*2);
-      // context.arc(0, 0, baseRadius+additional_layer_gap,0,Math.PI*2);
-      // context.arc(0, 0, baseRadius+(additional_layer_gap*2),0,Math.PI*2);
-      // context.stroke();
-      // context.restore();
-
-    // agents.forEach(agent => {
-    // agent.update();
-    // agent.draw(context);
-    // agent.bounce(bounce_limit, bounce_limit);
-    
-
-    // })
-
   };
  
 };
 
 canvasSketch(sketch, settings);
 
-
-class Vector {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.x_start = x;
-    this.y_start = y;
-  }
-
-  getDistance(v){
-    const dx = this.x - v.x;
-    const dy = this.y - v.y;
-    return Math.sqrt(dx*dx + dy*dy);
-  }
-
-
-}
 
 
 

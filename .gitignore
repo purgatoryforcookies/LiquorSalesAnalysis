@@ -1,3 +1,10 @@
 *.csv
 node_modules
 *.xlsx
+venv
+elasticsearch-data/_state
+elasticsearch-data/backup
+elasticsearch-data/indices
+elasticsearch-data/snapshot_cache
+elasticsearch-data/node.lock
+elasticsearch-data/nodes
