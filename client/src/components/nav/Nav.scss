@@ -1,0 +1,81 @@
+@use '../../variables';
+
+.nav__container{
+    height: 100px;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+
+    background: linear-gradient(180deg, hsl(0, 0%, 0%), hsla(0, 0%, 0%, 0)),linear-gradient(180deg, hsla(0, 0%, 0%, 0.404), #00000000);
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        bottom: 5%;
+        left: 20%;
+
+
+        ul{
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+
+            li{
+                font-size: 1.8rem;
+                letter-spacing: 0.0675rem;
+            }
+        }
+    }
+
+    .slogans{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 5px;
+        position: relative;
+        right: 5vw;
+
+        :first-child{
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -3px;
+        }
+
+        :nth-child(2){
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            position: relative;
+            bottom: 2px;
+        }
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-sm) {
+
+    .nav__container{
+
+        right: 0;
+        left: 0;
+        transform: unset;
+        .links{
+            display: none;
+        }
+
+        justify-content: flex-end;
+        .slogans{
+            position: absolute;
+            right: 5vw;
+            top: 0;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+@use '../../variables';
+
+
+.hero__container {
+
+    position: absolute;
+    width: 40%;
+    height: 21.75rem;
+    top: 15.06rem;
+    left: 14.19rem;
+
+    #title1 {
+        font-size: 7rem;
+        font-weight: 700;
+        letter-spacing: -0.5rem;
+        position: relative;
+        top: 2.7rem;
+    }
+
+    #title2 {
+        font-size: 7rem;
+        font-weight: 700;
+        letter-spacing: 1.825rem;
+        position: relative;
+        left: 7rem;
+    }
+
+    p {
+        font-size: 1.7rem;
+        font-weight: 700;
+        letter-spacing: 0.40625rem;
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+        position: relative;
+        top: 2rem;
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-md) {
+
+    .hero__container {
+        left: 5vw;
+        position: unset;
+        width: 80%;
+    
+        #title1 {
+            font-size: 5rem;
+            top: 2rem;
+        }
+    
+        #title2 {
+            font-size: 5rem;
+            letter-spacing: 1.3rem;
+            left: 7rem;
+        }
+    
+        p {
+            font-size: 1.5rem;
+            letter-spacing: 0.30625rem;
+
+        }
+    }
+
+}
+
+@media only screen and (max-width: variables.$breakpoint-sm) {
+
+    .hero__container {
+        // left: 5vw;
+        position: unset;
+        width: 85%;
+    
+        #title1 {
+            font-size: 4.5rem;
+            top: 1.5rem;
+        }
+    
+        #title2 {
+            font-size: 4.5rem;
+            letter-spacing: 1rem;
+            left: 2rem;
+        }
+    
+        p {
+            font-size: 1.5rem;
+            letter-spacing: 0.30625rem;
+
+        }
+    }
+
+}
+
+

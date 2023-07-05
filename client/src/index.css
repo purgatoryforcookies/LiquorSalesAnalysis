@@ -1,0 +1,36 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  overflow-x: hidden;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  font-size: 12px;
+
+
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  overflow: hidden;
+  position: relative;
+
+}
+
+ul{
+  list-style: none;
+}
+li{
+  text-decoration: none;
+}
+

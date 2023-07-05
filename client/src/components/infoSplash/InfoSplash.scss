@@ -1,0 +1,38 @@
+@use '../../variables';
+
+.infosplash__container{
+
+    width: 32.9375rem;
+    height: 40.875rem;
+    border-radius: 0.75rem;
+    border: 2px solid #585555;
+    background: rgba(51, 48, 48, 0.79);
+
+    position: absolute;
+    top: 15rem;
+    right: 8.375rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10%;
+    padding-top: 2.5rem;
+}
+
+
+@media only screen and (max-width: variables.$breakpoint-md) {
+
+    .infosplash__container{
+
+        position: unset;
+    }
+}
+
+@media only screen and (max-width: variables.$breakpoint-sm) {
+
+    .infosplash__container{
+        position: unset;
+        height: fit-content;
+        padding-bottom: 2rem;
+    }
+}
