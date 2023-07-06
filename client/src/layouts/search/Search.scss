@@ -1,6 +1,9 @@
 .search__container{
-    // background: conic-gradient(from 180deg at 50% 50%, #f7e6da, #eed0be, #e3b9a3, #d6a18b, #c78a75, #b67460, #9e6153, #80534b, #644642, #4a3837, #322a29, #1c1a1a);
-
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
 
 }
