@@ -60,3 +60,8 @@ type HitsBase struct {
 func (r *BasicResponse) HitsOnly() []Hits {
 	return r.Hits.Hits
 }
+
+type LiquorRow struct {
+	ItemNumber  string `json:"Item Number"`
+	Description string `json:"Item_Description"`
+}

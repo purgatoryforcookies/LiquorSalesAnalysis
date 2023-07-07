@@ -1,25 +1,22 @@
 package main
 
-import "net/http"
+import (
+	_ "github.com/lib/pq"
+)
 
 func main() {
 
-	// tmp := NewLiquorConnection("liquoridx")
+	// port := ":3002"
 
-	// res, err := tmp.SearchEmbedding("W78_IIkBtDQXcKWmGhbL", []string{"embed"})
-	// if err != nil {
-	// 	fmt.Println("Theres an error in the searchbedding, u know..", err)
-	// }
+	// liquorClient := NewLiquorConnection("liquoridx")
 
-	// res2 := tmp.SimilaritySearch(res)
+	// server := NewServer(liquorClient)
+	// http.ListenAndServe(port, server)
 
-	// fmt.Printf("%+v\n", res2.Hits.Hits)
+	connStr := "postgresql://username123:password123@localhost/db?sslmode=disable"
 
-	port := ":3002"
+	pgClient := NewPgConnection(connStr)
 
-	liquorClient := NewLiquorConnection("liquoridx")
-
-	server := NewServer(liquorClient)
-	http.ListenAndServe(port, server)
+	pgClient.FetchStats()
 
 }
