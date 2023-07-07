@@ -37,7 +37,7 @@ function Home() {
             transitionInterpolator,
             onTransitionEnd: rotateCamera
         }));
-    }, [viewState]);
+    }, []);
 
     const transitionInterpolator = new LinearInterpolator();
 
@@ -61,6 +61,7 @@ function Home() {
                 onAfterRender={rotateCamera}
                 onViewStateChange={v => updateViewState(v.viewState)}
                 style={{ zIndex: "-1", filter: "brightness(1)"}}
+                
             >
                 <Map mapStyle={BASEMAP.DARK_MATTER} />
             </DeckGL >

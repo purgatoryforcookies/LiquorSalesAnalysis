@@ -1,10 +1,11 @@
 .oneResult__container {
-
-    width: 40%;
-    min-width: 40rem;
+    
+    // width: 45rem;
+    width: 100%;
+    max-width: 50rem;
     height: 13.5625rem;
     position: relative;
-    right: 10rem;
+    right: 15vw;
     top: 10rem;
 
 
@@ -15,14 +16,14 @@
         width: fit-content;
         h1 {
             position: relative;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 600;
             letter-spacing: 0.12375rem;
         }
 
         .stamp {
-            width: 5rem;
-            height: 5rem;
+            width: 4.3rem;
+            height: 4.3rem;
             background-color: #333030;
             border-radius: 5rem;
             display: flex;
@@ -46,38 +47,16 @@
 
 
         }
-        .stamp:nth-of-type(1) {
-            backface-visibility: hidden;
-            // transform: translateZ(0);
-            // -webkit-font-smoothing: subpixel-antialiased;
-            // animation: floating2 15s linear 0s infinite normal both;
-
-        }
-        .stamp:nth-of-type(2) {
-            backface-visibility: hidden;
-            // transform: translateZ(0);
-            // -webkit-font-smoothing: subpixel-antialiased;
-            // animation: floating2 15s linear 0s infinite normal both;
-        }
-
         :nth-child(2) {
-            top: -5rem;
-            right: -4rem;
-
+            top: 8rem;
+            left: 10rem;
         }
 
         :nth-child(3) {
-            top: -1.6rem;
-            right: -7rem;
+            top: 8rem;
+            left: 3rem;
         }
-
-
     }
-
-
-
-
-
 
     .infoSection {
         display: flex;
@@ -122,37 +101,5 @@
 
         }
     }
-
-
-@keyframes floating1 {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(10px, 7px); }
-    100%   { transform: translate(0px, -0px); }    
-}
-@keyframes floating2 {
-	0% {
-		transform: translate(0);
-	}
-
-	20% {
-		transform: translate(-2px, 2px);
-	}
-
-	40% {
-		transform: translate(-2px, -2px);
-	}
-
-	60% {
-		transform: translate(2px, 2px);
-	}
-
-	80% {
-		transform: translate(2px, -2px);
-	}
-
-	100% {
-		transform: translate(0);
-	}
-}
 
 }

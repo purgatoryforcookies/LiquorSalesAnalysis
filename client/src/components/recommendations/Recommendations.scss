@@ -1,0 +1,94 @@
+.recommendations__container {
+
+    width: 49rem;
+    position: relative;
+    top: 20vh;
+    right: 10vw;
+
+    h1 {
+
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: -0.02063rem;
+        padding: 2rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+
+    .row{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.4rem; 
+
+        .categoryHiglight{
+            border: 1px solid #333030;
+            border-radius: 10px;
+        }
+
+
+        .categoryHiglight::before{
+            content: 'Same category';
+            position: absolute;
+            top: -1.5rem;
+            left: -10rem;
+            background-color: #333030;
+            color: white;
+            padding: 0.5rem;
+            width: 10rem;
+            opacity: 0;
+            transition: 0.3s all;
+        }
+    }
+
+    .row:hover{
+       font-weight: 600;
+       
+       .categoryHiglight::before{
+        left: 2rem;
+           opacity: 1;
+       }
+
+       
+    }
+
+
+    .row>p:first-child{
+        width: 3rem;
+        height: 1.8rem;
+        font-size: 1.4rem;
+        text-align: center;
+
+    }
+
+
+
+    .row>p:nth-child(2){
+        width: 50%;
+        font-size: 1.2rem;
+        text-align: left;
+        position: relative;
+        top: 0.3rem;
+    }
+
+    .score{
+        border-bottom: 8px solid #333030;
+        border-bottom-right-radius: 8px;
+        position: relative;
+        bottom: 0.6rem;
+
+        p{
+            position: absolute;
+            right: 0.8rem;
+            bottom: 0.1rem;
+            font-size: 1.2rem;
+        }
+
+    }
+
+
+
+}

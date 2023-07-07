@@ -13,7 +13,6 @@ const getSearchResults = async ({ queryKey }: QueryFunctionContext) => {
             try {
                 return LiquorSchema.parse(resp.data)
             } catch (error) {
-                console.log(error)
                 if (error instanceof ZodError) {
                     throw new Error('Invalid data')
                 }
@@ -31,7 +30,6 @@ const getEngineResults = async ({ queryKey }: QueryFunctionContext) => {
             try {
                 return LiquorSchema.parse(resp.data)
             } catch (error) {
-                console.log(error)
                 if (error instanceof ZodError) {
                     throw new Error('Invalid data')
                 }

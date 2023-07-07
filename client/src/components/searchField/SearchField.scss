@@ -8,7 +8,6 @@
     position: absolute;
     top: 6rem;
     left: 10rem;
-    width: 25rem;
 
     input{
         width: 23rem;
@@ -41,11 +40,11 @@
         transition: 0.4s ease-in-out;
         overflow: hidden;
 
+
         ul{
             position: absolute;
             right: 0;
-            width: initial;
-            height: initial;
+            overflow: hidden;
             width: 100%;
 
             li{
@@ -57,6 +56,14 @@
                 letter-spacing: 0.3rem;
                 opacity: 0;
                 transition: opacity 0.5s;
+                overflow: hidden;
+
+                p{
+                    font-size: 1.2rem;
+                    letter-spacing: 0.1rem;
+                    margin-top: 0.5rem;
+                }
+                
 
                 #liters{
                     letter-spacing: 0.06rem;
@@ -75,7 +82,7 @@
     }
 
     .searchField__results:not(.closed){
-        height: 60rem;
+        height: 90vh;
 
         ul{
             li{
