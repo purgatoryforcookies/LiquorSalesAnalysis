@@ -1,0 +1,55 @@
+name: Golang apiserver
+
+on:
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: build
+        run: |
+            go build -o bin/server
+
+  deploy:
+    runs-on: ubuntu-latest
+    depends-on: build
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: build
+        run: |
+            go build -o bin/server
+      
+      - name: Deploy to Severi
+        uses: easingthemes/ssh-deploy@main
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SEVERI_KEY }}
+            SOURCE: "bin/"
+            REMOTE_HOST: ${{ secrets.SEVERI_HOST }}
+            REMOTE_USER: ${{ secrets.SEVERI_USER }}
+            TARGET: ${{ secrets.SEVERI_TARGET }}
+            SCRIPT_AFTER: |
+                cd ${{ secrets.SEVERI_TARGET }}
+                ./server
+    
