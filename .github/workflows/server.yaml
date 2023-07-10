@@ -37,7 +37,7 @@ jobs:
     defaults:
       run:
         working-directory: ./server
-        
+
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -55,7 +55,7 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
             SSH_PRIVATE_KEY: ${{ secrets.SEVERI_KEY }}
-            SOURCE: "bin/"
+            SOURCE: "server/bin/"
             REMOTE_HOST: ${{ secrets.SEVERI_HOST }}
             REMOTE_USER: ${{ secrets.SEVERI_USER }}
             TARGET: ${{ secrets.SEVERI_TARGET }}
