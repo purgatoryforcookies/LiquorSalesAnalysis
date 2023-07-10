@@ -9,16 +9,19 @@ import (
 func main() {
 
 	port := ":3002"
+	connStr := "postgresql://username123:password123@localhost/db?sslmode=disable"
 
 	liquorClient := NewLiquorConnection("liquoridx")
+	pgClient := NewPgConnection(connStr)
 
-	server := NewServer(liquorClient)
+	server := NewServer(liquorClient, pgClient)
 	http.ListenAndServe(port, server)
 
-	// connStr := "postgresql://username123:password123@localhost/db?sslmode=disable"
+	// res, err := pgClient.FetchStats(43100)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
-	// pgClient := NewPgConnection(connStr)
-
-	// pgClient.FetchStats()
+	// fmt.Println(*res)
 
 }

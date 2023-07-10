@@ -1,7 +1,9 @@
-import { TLiquorFields } from "../../service/types"
+import { TEngineResults } from "../../service/types"
 import "./OneResult.scss"
-export const OneResult = ({ name, pack, vol_ml, category }: TLiquorFields) => {
 
+export const OneResult = ({result, stats}: TEngineResults) => {
+
+    const { pack, vol_ml, category, name } = result[0].fields
 
     return (
         <div className="oneResult__container">
@@ -21,11 +23,11 @@ export const OneResult = ({ name, pack, vol_ml, category }: TLiquorFields) => {
             <div className="infoSection">
                 <div className="row">
                     <p>Average Price</p>
-                    <p>13,98 $</p>
+                    <p>{stats.price_avg_usd.toFixed(2)} $</p>
                 </div>
                 <div className="row">
                     <p>Busiest Store</p>
-                    <p>Hartmans Market</p>
+                    <p>{stats.store_name}</p>
                 </div>
                 <div className="row">
                     <p>Category</p>
@@ -33,7 +35,7 @@ export const OneResult = ({ name, pack, vol_ml, category }: TLiquorFields) => {
                 </div>
                 <div className="row">
                     <p>Sold</p>
-                    <p>200L</p>
+                    <p>{stats.sold_liters.toFixed(2)} Liters</p>
                 </div>
             </div>
 

@@ -1,8 +1,9 @@
-import { TLiquor } from '../../service/types'
+import { TLiquor, TLiquorSearchResults } from '../../service/types'
 import './Recommendations.scss'
 
 
-export const Recommendations = ({ data }: any) => {
+export const Recommendations = ({data} : {data:TLiquorSearchResults}) => {
+
 
     const dataToShow = data?.slice(1)
     const originalCatgeroy = data?.[0]?.fields?.category[0]

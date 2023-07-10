@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 )
 
@@ -23,27 +22,40 @@ func NewPgConnection(conStr string) *Postgres {
 
 }
 
-func (p *Postgres) FetchStats() {
+func (p *Postgres) FetchStats(itemNumber int) (*LiquorStats, error) {
 
-	rows, err := p.client.Query("SELECT liquor.Item Number, liquor.Item Description FROM liquor LIMIT 2")
+	rows, err := p.client.Query(`SELECT item_number, 
+								price_avg_usd,
+								store_count,
+								sold_liters,
+								busiest_store_id,
+								store_name,
+								store_city
+								FROM liquor_store_stats
+								WHERE item_number= $1 LIMIT 1`, itemNumber)
 
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	got := []LiquorRow{}
+	got := LiquorStats{}
 	for rows.Next() {
-		// fmt.Println(rows)
-		var r LiquorRow
-		err = rows.Scan(&r.ItemNumber, &r.Description)
+
+		err = rows.Scan(&got.ItemNumber,
+			&got.Price,
+			&got.StoreCount,
+			&got.Liters,
+			&got.BusyStoreId,
+			&got.StoreName,
+			&got.StoreCity,
+		)
 
 		if err != nil {
 			log.Fatalf("Scan: %v", err)
+			return nil, err
 		}
-		got = append(got, r)
-
 	}
 
-	fmt.Printf("%+v\n", got)
+	return &got, nil
 
 }

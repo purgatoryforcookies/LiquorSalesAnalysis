@@ -1,13 +1,24 @@
 @use '../../variables';
 
+.statsRope__container::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    backdrop-filter: blur(8px);
+    background: hsla(180, 2%, 36%, 0.229);
+    border-radius: 0.75rem;
+    border: 1px solid #B8B8B8
+}
+
+
+
 .statsRope__container {
 
     height: 7.56rem;
     width: 98rem;
     border-radius: 0.75rem;
-    border: 1px solid #B8B8B8;
-    background: rgba(51, 49, 49, 0.74);
-
 
     position: absolute;
     bottom: 12%;
@@ -46,27 +57,34 @@
 
 @media only screen and (max-width: variables.$breakpoint-md) {
 
-    .statsRope__container {
-
-        position: unset;
-        transform: unset;
+    .statsRope__container::before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: -2px;
+        backdrop-filter: blur(8px);
+        background: hsla(180, 2%, 36%, 0.229);
+        border-radius: 0.75rem;
+        border: 1px solid #B8B8B8
     }
 
-}
-
-@media only screen and (max-width: variables.$breakpoint-sm) {
 
     .statsRope__container {
-
-        position: unset;
-        transform: unset;
+        all: unset;
+        height: auto;
+        max-height: 25rem;
+        width: 80%;
+        position: relative;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, 80px);
-        grid-template-rows: repeat(auto-fit, 80px);
+        grid-template-columns: repeat(auto-fill, min(30%, 100px));
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
 
-        height: fit-content;
-        width: 80%;
+        justify-items: center;
+        
     }
 
 }

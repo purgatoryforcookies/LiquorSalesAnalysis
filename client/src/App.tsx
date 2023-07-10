@@ -23,7 +23,9 @@ function App() {
   return (
     <div>
       <Nav />
-      <ViewLayout height="100vh" color='#F3F2F2'>
+      <ViewLayout 
+      // height="200vh"
+       color='#F3F2F2'>
         <Home />
       </ViewLayout>
       <QueryClientProvider client={queryClient}>

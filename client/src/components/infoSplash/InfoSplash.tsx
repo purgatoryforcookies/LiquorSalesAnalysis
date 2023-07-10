@@ -6,8 +6,8 @@ function InfoSplash({hidden}:any) {
   return (
     <div className='infosplash__container'>
       
-      <ChoiceOf title="Choice of Drink" best="Tomato Soup" least="Whiskey Sour 12 oz" hidden={hidden}/>
-      <ChoiceOf title="Choice of Day" best="Monday" least="Friday" reverse={true} hidden={hidden}/>
+      <ChoiceOf title="Choice of Drink" best="Black Velvet Whisky" least="Lemonade Moonshine" hidden={hidden}/>
+      <ChoiceOf title="Choice of Day" best="Tuesday" least="Sunday" reverse={true} hidden={hidden}/>
 
     </div>
   )

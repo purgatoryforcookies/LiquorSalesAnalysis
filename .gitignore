@@ -8,3 +8,4 @@ elasticsearch-data/indices
 elasticsearch-data/snapshot_cache
 elasticsearch-data/node.lock
 elasticsearch-data/nodes
+server/bin

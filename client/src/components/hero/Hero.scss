@@ -43,22 +43,24 @@
 
     .hero__container {
         left: 5vw;
-        position: unset;
+        position: relative;
         width: 80%;
+        top: unset;
+        left: unset;
     
         #title1 {
-            font-size: 5rem;
+            font-size: 4rem;
             top: 2rem;
         }
     
         #title2 {
-            font-size: 5rem;
+            font-size: 4rem;
             letter-spacing: 1.3rem;
-            left: 7rem;
+            left: 3rem;
         }
     
         p {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             letter-spacing: 0.30625rem;
 
         }
@@ -66,31 +68,6 @@
 
 }
 
-@media only screen and (max-width: variables.$breakpoint-sm) {
 
-    .hero__container {
-        // left: 5vw;
-        position: unset;
-        width: 85%;
-    
-        #title1 {
-            font-size: 4.5rem;
-            top: 1.5rem;
-        }
-    
-        #title2 {
-            font-size: 4.5rem;
-            letter-spacing: 1rem;
-            left: 2rem;
-        }
-    
-        p {
-            font-size: 1.5rem;
-            letter-spacing: 0.30625rem;
-
-        }
-    }
-
-}
 
 

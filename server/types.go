@@ -36,7 +36,8 @@ type Hits struct {
 type Embeds struct {
 	HitsBase
 	Fields struct {
-		Embed []float64 `json:"embed"`
+		Embed       []float64 `json:"embed"`
+		ProductCode []int     `json:"productCode"`
 	} `json:"fields"`
 }
 
@@ -61,7 +62,12 @@ func (r *BasicResponse) HitsOnly() []Hits {
 	return r.Hits.Hits
 }
 
-type LiquorRow struct {
-	ItemNumber  string `json:"Item Number"`
-	Description string `json:"Item_Description"`
+type LiquorStats struct {
+	ItemNumber  int     `json:"item_number"`
+	Price       float32 `json:"price_avg_usd"`
+	StoreCount  int     `json:"store_count"`
+	Liters      float32 `json:"sold_liters"`
+	BusyStoreId int     `json:"busiest_store_id"`
+	StoreName   string  `json:"store_name"`
+	StoreCity   string  `json:"store_city"`
 }

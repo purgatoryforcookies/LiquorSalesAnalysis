@@ -1,11 +1,10 @@
 .oneResult__container {
-    
-    // width: 45rem;
     width: 100%;
     max-width: 50rem;
+    min-width: 40rem;
     height: 13.5625rem;
     position: relative;
-    right: 15vw;
+    right: 10vw;
     top: 10rem;
 
 
@@ -76,7 +75,7 @@
             gap: 5px;
 
             :first-child {
-                font-size: 0.8rem;
+                font-size: 1rem;
                 font-weight: 500;
                 letter-spacing: -0.01125rem;
                 width: 7rem;

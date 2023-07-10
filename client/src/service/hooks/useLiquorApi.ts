@@ -1,15 +1,14 @@
 import { QueryFunction, useQuery } from "react-query"
-import { TLiquorSearchResults } from "../types"
 import { AxiosError } from "axios"
 
 
 
 
-export const useLiquorApi = (queryKey:[string, string|number], 
-    queryFn:QueryFunction<TLiquorSearchResults>) => {
+export const useLiquorApi = <T,> (queryKey:[string, string|number], 
+    queryFn:QueryFunction<T>) => {
 
 
-    const { data, isError, error, isLoading } = useQuery<TLiquorSearchResults, AxiosError>({
+    const { data, isError, error, isLoading } = useQuery<T, AxiosError>({
         queryKey: queryKey,
         queryFn: queryFn,
         keepPreviousData: true,

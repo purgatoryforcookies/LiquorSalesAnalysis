@@ -29,7 +29,7 @@ function SearchField({ handleSelect }: any) {
     useEffect(() => {
         if (isError) {
             // @ts-ignore
-            setErrorMes(error?.response?.data)
+            setErrorMes(error?.response?.data || error?.message)
         }
     }, [isError])
 
@@ -46,7 +46,7 @@ function SearchField({ handleSelect }: any) {
 
             <div className={search != '' ? 'searchField__results' : "searchField__results closed"}>
                 <ul>
-
+                    {isLoading ? <li>Loading...</li> : null}
                     {isError && !isLoading ? <li>{errorMes}</li> : null}
                     {!isError && !isLoading ? data?.map(item => (
                         <li key={item._id} onClick={() => selectionHandler(item)}>
