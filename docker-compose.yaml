@@ -20,6 +20,8 @@ services:
         soft: 65536
         hard: 65536
     environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
       - cluster.name=es-docker
       - node.name=node1
       - bootstrap.memory_lock=true
@@ -33,8 +35,8 @@ services:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_USER: username123
-      POSTGRES_PASSWORD: password123
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: db
     ports:
       - '5432:5432'
