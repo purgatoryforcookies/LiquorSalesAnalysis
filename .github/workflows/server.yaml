@@ -61,7 +61,7 @@ jobs:
             TARGET: ${{ secrets.SEVERI_TARGET }}
             SCRIPT_AFTER: |
                 cd ${{ secrets.SEVERI_TARGET }}
-                ./server
+                ./server &
                 echo 0 >> $GITHUB_OUTPUT
                 exit 0
     
