@@ -3,7 +3,7 @@ import { EngineSchema, LiquorSchema } from "./types";
 import { QueryFunctionContext } from "react-query";
 import { ZodError } from "zod";
 
-const URL = 'http://localhost:3002'
+const URL = '/elapi'
 
 
 const getSearchResults = async ({ queryKey }: QueryFunctionContext) => {

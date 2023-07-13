@@ -28,8 +28,8 @@ func NewServer(elaConnection *LiquorClient, pgConnection *Postgres) *Server {
 }
 
 func (s *Server) router() {
-	s.HandleFunc("/search", s.handleQuickSearch()).Methods("GET")
-	s.HandleFunc("/engine", s.handleEngineRequest()).Methods("GET")
+	s.HandleFunc("/elapi/search", s.handleQuickSearch()).Methods("GET")
+	s.HandleFunc("/elapi/engine", s.handleEngineRequest()).Methods("GET")
 }
 
 func (s *Server) handleQuickSearch() http.HandlerFunc {

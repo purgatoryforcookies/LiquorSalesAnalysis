@@ -61,7 +61,9 @@ jobs:
             TARGET: ${{ secrets.SEVERI_TARGET }}
             SCRIPT_AFTER: |
                 cd ${{ secrets.SEVERI_TARGET }}
-                ./server
+                export ${{ secrets.POSTGRES_PASSWORD }}
+                export ${{ secrets.POSTGRES_USER }}
+                ./server &
                 echo 0 >> $GITHUB_OUTPUT
                 exit 0
     

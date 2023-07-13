@@ -8,12 +8,12 @@ function Hero() {
             <h1 id='title2'>Situation</h1>
 
             <p>
-                Reactive data analysis on Iowa states liquor data.
+                Recommendation engine for Iowa states liquors.
                 Dataset contains purchase information of Iowa Class “E” liquor
                 licensees by product and date of purchase.
                 <br />
                 <br />
-                Recommendation engine 1.0
+                
             </p>
 
 
