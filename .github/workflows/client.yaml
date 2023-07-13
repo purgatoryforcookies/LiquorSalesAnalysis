@@ -1,0 +1,60 @@
+name: Build and deploy client
+
+on:
+  push:
+    paths:
+      - 'client/**'
+    branches:
+      - 'master'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build client
+    timeout-minutes: 4
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+      
+      - name: Intall dependecies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./client/dist
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    needs: build
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./client/dist
+      
+      - name: Deploy to Severi
+        uses: easingthemes/ssh-deploy@main
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SEVERI_KEY }}
+            SOURCE: "./client/dist"
+            REMOTE_HOST: ${{ secrets.SEVERI_HOST }}
+            REMOTE_USER: ${{ secrets.SEVERI_USER }}
+            TARGET: ${{ secrets.SEVERI_CLIENT_TARGET }}
