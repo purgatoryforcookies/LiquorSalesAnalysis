@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"os"
 
 	_ "github.com/lib/pq"
 )
@@ -9,7 +11,8 @@ import (
 func main() {
 
 	port := ":3002"
-	connStr := "postgresql://username123:password123@localhost/db?sslmode=disable"
+	connStr := fmt.Sprintf("postgresql://%s:%s@localhost/db?sslmode=disable",
+		os.Getenv("POSTGRES_USER"), os.Getenv("POSTGRES_PASSWORD"))
 
 	liquorClient := NewLiquorConnection("liquoridx")
 	pgClient := NewPgConnection(connStr)
