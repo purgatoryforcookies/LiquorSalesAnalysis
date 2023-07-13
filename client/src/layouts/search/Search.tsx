@@ -10,10 +10,8 @@ import { TEngineResults } from '../../service/types'
 function Search() {
 
   const [selected, setSelected] = useState('')
-
   const { data, isLoading } = useLiquorApi<TEngineResults>(['engine', selected], getEngineResults)
 
-  console.log(data)
   return (
     <div className='search__container'>
 

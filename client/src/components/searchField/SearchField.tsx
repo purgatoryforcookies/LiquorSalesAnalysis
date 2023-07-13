@@ -10,12 +10,12 @@ function SearchField({ handleSelect }: any) {
 
     const [search, setSearch] = useState('')
     const [selectionMemory, setSelectionMemory] = useState('')
-    const [errorMes, setErrorMes] = useState('')
+    const [errorMes, setErrorMes] = useState<string | undefined>('')
     const ref = useRef(null)
     const debouncedKeyword = useDebounce(search, 300)
 
 
-    const { data, isError, isLoading } = useLiquorApi(
+    const { data, isError, error, isLoading } = useLiquorApi(
         ['search', debouncedKeyword], getSearchResults)
 
     useClickWatcher<string>(ref, '', setSearch)
@@ -28,7 +28,7 @@ function SearchField({ handleSelect }: any) {
 
     useEffect(() => {
         if (isError) {
-            setErrorMes("Error, sorry :)")
+            setErrorMes(error?.response?.data as string || error?.message)
         }
     }, [isError])
 
