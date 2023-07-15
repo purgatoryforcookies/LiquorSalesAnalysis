@@ -109,6 +109,17 @@
             }
         }
 
+        .row:hover {
+            font-weight: 600;
+    
+            .categoryHiglight::before {
+                left: 2rem;
+                opacity: 1;
+            }
+    
+    
+        }
+
 
     }
 
