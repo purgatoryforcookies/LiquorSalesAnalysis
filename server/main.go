@@ -20,11 +20,4 @@ func main() {
 	server := NewServer(liquorClient, pgClient)
 	http.ListenAndServe(port, server)
 
-	// res, err := pgClient.FetchStats(43100
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Println(*res)
-
 }
