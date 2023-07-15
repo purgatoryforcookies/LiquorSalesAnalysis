@@ -1,7 +1,7 @@
 import { TEngineResults } from "../../service/types"
 import "./OneResult.scss"
 
-export const OneResult = ({result, stats}: TEngineResults) => {
+export const OneResult = ({ result, stats }: TEngineResults) => {
 
     const { pack, vol_ml, category, name } = result[0].fields
 
@@ -10,13 +10,16 @@ export const OneResult = ({result, stats}: TEngineResults) => {
 
             <div className="header">
                 <h1>{name[0]}</h1>
-                <div className="stamp">
-                    <p>{vol_ml[0] / 1000}</p>
-                    <p>Vol (L)</p>
-                </div>
-                <div className="stamp">
-                    <p>{pack[0]}</p>
-                    <p>pack</p>
+                <div className="stamps">
+
+                    <div className="stamp">
+                        <p>{vol_ml[0] / 1000}</p>
+                        <p>Vol (L)</p>
+                    </div>
+                    <div className="stamp">
+                        <p>{pack[0]}</p>
+                        <p>pack</p>
+                    </div>
                 </div>
             </div>
 

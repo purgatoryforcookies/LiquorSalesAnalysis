@@ -29,7 +29,7 @@ function App() {
         <Home />
       </ViewLayout>
       <QueryClientProvider client={queryClient}>
-        <ViewLayout height="100vh" backGroundColor='#D1CFCF' color='#333030'>
+        <ViewLayout height="auto" backGroundColor='#D1CFCF' color='#333030'>
           <Search />
         </ViewLayout>
       </QueryClientProvider>

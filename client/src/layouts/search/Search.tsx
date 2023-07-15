@@ -14,15 +14,19 @@ function Search() {
 
   return (
     <div className='search__container'>
+      <div className="left">
 
-      <SearchField handleSelect={setSelected} />
+        <SearchField handleSelect={setSelected} />
+      </div>
+      <div className="right">
+        {data && !isLoading ?
+          <>
+            <OneResult {...data} />
+            <Recommendations data={data.engine} />
+          </>
+          : null}
 
-      {data && !isLoading ?
-        <>
-          <OneResult {...data} />
-          <Recommendations data={data.engine}/>
-        </>
-        : null}
+      </div>
     </div>
   )
 }

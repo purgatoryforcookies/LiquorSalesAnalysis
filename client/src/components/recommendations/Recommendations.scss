@@ -1,9 +1,6 @@
-.recommendations__container {
+@use '../../variables';
 
-    width: 52rem;
-    position: relative;
-    top: 20vh;
-    right: 9vw;
+.recommendations__container {
 
     h1 {
 
@@ -18,45 +15,45 @@
     justify-content: space-around;
     gap: 1rem;
 
-    .row{
+    .row {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        gap: 0.4rem; 
+        gap: 0.4rem;
 
-        .categoryHiglight{
+        .categoryHiglight {
             border: 1px solid #333030;
             border-radius: 10px;
         }
 
 
-        .categoryHiglight::before{
+        .categoryHiglight::before {
             content: 'Same category';
             position: absolute;
-            top: -1.5rem;
-            left: -10rem;
+            right: -1.5rem;
+            top: 12rem;
             background-color: #333030;
             color: white;
             padding: 0.5rem;
-            width: 10rem;
+            width: 15rem;
             opacity: 0;
             transition: 0.3s all;
         }
     }
 
-    .row:hover{
-       font-weight: 600;
-       
-       .categoryHiglight::before{
-        left: 2rem;
-           opacity: 1;
-       }
+    .row:hover {
+        font-weight: 600;
 
-       
+        .categoryHiglight::before {
+            right: 45rem;
+            opacity: 1;
+        }
+
+
     }
 
 
-    .row>p:first-child{
+    .row>p:first-child {
         width: 3rem;
         height: 1.8rem;
         font-size: 1.4rem;
@@ -66,7 +63,7 @@
 
 
 
-    .row>p:nth-child(2){
+    .row>p:nth-child(2) {
         width: 50%;
         font-size: 1.2rem;
         text-align: left;
@@ -74,13 +71,13 @@
         top: 0.3rem;
     }
 
-    .score{
+    .score {
         border-bottom: 8px solid #333030;
         border-bottom-right-radius: 8px;
         position: relative;
         bottom: 0.6rem;
 
-        p{
+        p {
             position: absolute;
             right: 0.8rem;
             bottom: 0.1rem;
@@ -90,5 +87,29 @@
     }
 
 
+
+}
+
+@media only screen and (max-width: variables.$breakpoint-md) {
+    .recommendations__container {
+        width: 100%;
+        flex-direction: column;
+        margin-left: 2rem;
+        margin-bottom: 15rem;
+
+        .row {
+
+            .categoryHiglight::before {
+                content: 'Same category';
+                position: absolute;
+                top: 27rem;
+                left: -10rem;
+                height: 2rem;
+
+            }
+        }
+
+
+    }
 
 }

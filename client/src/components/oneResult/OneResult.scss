@@ -1,18 +1,20 @@
+@use '../../variables';
+
 .oneResult__container {
     width: 100%;
     max-width: 50rem;
     min-width: 40rem;
     height: 13.5625rem;
-    position: relative;
-    right: 10vw;
-    top: 10rem;
-
+    display: flex;
+    flex-direction: column;
 
     .header {
         position: relative;
         height: 5rem;
         display: flex;
-        width: fit-content;
+        justify-content: space-between;
+        width: 100%;
+
         h1 {
             position: relative;
             font-size: 2.2rem;
@@ -20,41 +22,50 @@
             letter-spacing: 0.12375rem;
         }
 
-        .stamp {
-            width: 4.3rem;
-            height: 4.3rem;
-            background-color: #333030;
-            border-radius: 5rem;
+        .stamps {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
- 
+            gap: 1rem;
 
-            :first-child {
-                color: #D6D1D1;
-                font-size: 1.2rem;
-                letter-spacing: 0.045rem;
-                
+
+            .stamp {
+                width: 4.3rem;
+                height: 4.3rem;
+                background-color: #333030;
+                border-radius: 5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+
+
+                :first-child {
+                    color: #D6D1D1;
+                    font-size: 1.2rem;
+                    letter-spacing: 0.045rem;
+
+                }
+
+                :nth-child(2) {
+                    color: #D6D1D1;
+                    font-size: 1rem;
+                    letter-spacing: 0.045rem;
+                }
+
+
             }
-            :nth-child(2){
-                color: #D6D1D1;
-                font-size: 1rem;
-                letter-spacing: 0.045rem;
+
+            :nth-child(2) {
+                top: 8rem;
+                left: 10rem;
             }
 
+            :nth-child(3) {
+                top: 8rem;
+                left: 3rem;
+            }
+        }
 
-        }
-        :nth-child(2) {
-            top: 8rem;
-            left: 10rem;
-        }
-
-        :nth-child(3) {
-            top: 8rem;
-            left: 3rem;
-        }
     }
 
     .infoSection {
@@ -62,11 +73,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: fit-content;
-        height: 6.875rem;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-
+        align-self: flex-end;
 
         .row {
             display: flex;
@@ -83,8 +90,6 @@
                 text-align: right;
                 position: relative;
                 top: 30%;
-
-
             }
 
             :nth-child(2) {
@@ -94,11 +99,26 @@
                 letter-spacing: -0.01875rem;
                 position: relative;
                 bottom: 5%;
-
-
             }
 
         }
     }
+
+}
+
+@media only screen and (max-width: variables.$breakpoint-md) {
+    .oneResult__container {
+        all: unset;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        height: 20rem;
+        padding: 0 20px 0 20px;
+        position: relative;
+        justify-content: center;
+        
+
+    }
+
 
 }
