@@ -1,6 +1,7 @@
 .viewLayout__container{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     position: relative;
+    align-items: center;
     min-height: 100vh;
 }
