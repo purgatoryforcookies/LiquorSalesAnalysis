@@ -7,12 +7,12 @@ export const Recommendations = ({data} : {data:TLiquorSearchResults}) => {
 
     const dataToShow = data?.slice(1)
     const originalCatgeroy = data?.[0]?.fields?.category[0]
-    console.log(originalCatgeroy)
+
     return (
         <div className='recommendations__container'>
             <h1>Recommended</h1>
             {dataToShow ? dataToShow.map((item: TLiquor, index: number) => (
-                <div className="row">
+                <div key={item._id} className="row">
                     <p className=
                         {originalCatgeroy === item.fields.category[0]
                             ? 'categoryHiglight' : ''} >
