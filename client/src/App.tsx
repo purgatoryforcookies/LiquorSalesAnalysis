@@ -24,7 +24,7 @@ function App() {
     <div>
       <Nav />
       <ViewLayout 
-      height="100vh"
+      // height="auto"
        color='#F3F2F2'>
         <Home />
       </ViewLayout>

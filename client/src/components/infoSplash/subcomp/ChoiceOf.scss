@@ -28,6 +28,7 @@
 
         #best, #least {
             font-size: 1.125rem;
+            font-weight: 400;
             text-align: center;
             width: 11.5rem;
             position: absolute;
@@ -69,14 +70,7 @@
         .values {
             #best, #least {
                 font-size: 1rem;
-                width: 9rem;
-            }
-    
-            #best{
-                left: 0.1rem;
-            }
-            #least{
-                right: 0.2rem;
+                width: 10rem;
             }
         }
     }
