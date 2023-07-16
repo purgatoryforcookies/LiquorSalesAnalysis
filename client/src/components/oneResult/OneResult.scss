@@ -7,6 +7,7 @@
     height: 13.5625rem;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 
     .header {
         position: relative;
@@ -26,7 +27,6 @@
             display: flex;
             gap: 1rem;
 
-
             .stamp {
                 width: 4.3rem;
                 height: 4.3rem;
@@ -37,13 +37,10 @@
                 justify-content: center;
                 align-items: center;
 
-
-
                 :first-child {
                     color: #D6D1D1;
                     font-size: 1.2rem;
                     letter-spacing: 0.045rem;
-
                 }
 
                 :nth-child(2) {
@@ -51,8 +48,6 @@
                     font-size: 1rem;
                     letter-spacing: 0.045rem;
                 }
-
-
             }
 
             :nth-child(2) {
@@ -65,7 +60,6 @@
                 left: 3rem;
             }
         }
-
     }
 
     .infoSection {
@@ -74,6 +68,7 @@
         justify-content: space-between;
         width: fit-content;
         align-self: flex-end;
+
 
         .row {
             display: flex;
@@ -100,7 +95,6 @@
                 position: relative;
                 bottom: 5%;
             }
-
         }
     }
 
@@ -116,9 +110,6 @@
         padding: 0 20px 0 20px;
         position: relative;
         justify-content: center;
-        
-
+        gap: 3rem;
     }
-
-
 }
