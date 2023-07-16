@@ -12,15 +12,18 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import StatsRope from '../../components/statsRope/StatsRope';
 import Timeline from '../../assets/svgComponents/timeline/Timeline';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import data from '../../assets/data.json'
+
 
 
 const INITIAL_VIEW_STATE = {
-    longitude: -93.6465,
-    latitude: 41.74002,
-    zoom: 5,
+    longitude: -93.501691779026,
+    latitude: 42.00199542737385,
+    zoom: 7,
     pitch: 60,
     bearing: 0
 };
+
 
 
 function Home() {
@@ -33,22 +36,32 @@ function Home() {
             ...v,
             bearing: v.bearing + 0.06,
             //   pitch: v.pitch,
-            transitionDuration: 8,
+            transitionDuration: 12,
             transitionInterpolator,
             onTransitionEnd: rotateCamera
         }));
     }, []);
 
-    const transitionInterpolator = new LinearInterpolator();
+    const transitionInterpolator = new LinearInterpolator(); 
 
     const layers = [new HexagonLayer({
         id: 'hexagon-layer',
-        data: null,
+        data: data,
         pickable: false,
+        colorRange: [
+            [1, 152, 189],
+            [73, 227, 206],
+            [216, 254, 181],
+            [254, 237, 177],
+            [254, 173, 84],
+            [209, 55, 78]
+          ],
         extruded: true,
-        radius: 10000,
-        elevationRange: [0, 9000],
-        getPosition: d => d.COORDINATES,
+        radius: 200,
+        coverage: 4,
+        elevationRange: [0, 170000],
+        getElevationScale: (d:{liters:number}) => d.liters,
+        getPosition: d => d.coords,
     })];
 
     return (
