@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@deck.gl/carto": "^8.9.19",
-    "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "deck.gl": "^8.9.19",
     "framer-motion": "^10.12.18",
@@ -34,6 +33,7 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "sass": "^1.63.6",
     "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "autoprefixer": "^10.4.14"
   }
 }
