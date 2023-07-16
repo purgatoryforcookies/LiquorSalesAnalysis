@@ -9,8 +9,8 @@ import { useLiquorApi } from '../../service/hooks/useLiquorApi'
 function SearchField({ handleSelect }: any) {
 
     const [search, setSearch] = useState('')
-    const [selectionMemory, setSelectionMemory] = useState('')
     const [errorMes, setErrorMes] = useState<string | undefined>('')
+    const [open, setOpen] = useState(false)
     const ref = useRef(null)
     const debouncedKeyword = useDebounce(search, 300)
 
@@ -18,11 +18,11 @@ function SearchField({ handleSelect }: any) {
     const { data, isError, error, isLoading } = useLiquorApi(
         ['search', debouncedKeyword], getSearchResults)
 
-    useClickWatcher<string>(ref, '', setSearch)
+    useClickWatcher<boolean>(ref, false, setOpen)
 
     const selectionHandler = (item: TLiquor) => {
         handleSelect(item._id)
-        setSelectionMemory(item.fields.name[0])
+        setOpen(false)
         setSearch('')
     }
 
@@ -36,15 +36,15 @@ function SearchField({ handleSelect }: any) {
         <div className='searchField__container' ref={ref}>
 
             <form action="">
-                <input type="text" placeholder='Search...' onFocus={() => setSearch(selectionMemory)}
+                <input type="text" placeholder='Search...' onFocus={() => setOpen(true)}
                     value={search} onChange={(e) => setSearch(e.target.value)} />
             </form>
 
-            <div className={search != '' ? 'searchField__results' : "searchField__results closed"}>
+            <div className={open ? 'searchField__results' : "searchField__results closed"}>
                 <ul>
                     {isLoading ? <li>Loading...</li> : null}
                     {isError && !isLoading ? <li>{errorMes}</li> : null}
-                    {!isError && !isLoading ? data?.map(item => (
+                    {open ? data?.map(item => (
                         <li key={item._id} onClick={() => selectionHandler(item)}>
                             <p id='liters'>{item.fields.vol_ml[0] / 1000}L</p>
                             <p>{item.fields.name[0]}</p>
