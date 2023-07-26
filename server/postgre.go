@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 )
 
@@ -35,7 +36,7 @@ func (p *Postgres) FetchStats(itemNumber int) (*LiquorStats, error) {
 								WHERE item_number= $1 LIMIT 1`, itemNumber)
 
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 
 	got := LiquorStats{}
@@ -51,7 +52,7 @@ func (p *Postgres) FetchStats(itemNumber int) (*LiquorStats, error) {
 		)
 
 		if err != nil {
-			log.Fatalf("Scan: %v", err)
+			fmt.Println(err)
 			return nil, err
 		}
 	}
