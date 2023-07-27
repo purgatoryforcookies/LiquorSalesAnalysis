@@ -48,7 +48,7 @@ func (s *LiquorClient) SearchElastic(query map[string]interface{}, output interf
 		s.client.Search.WithTrackTotalHits(true),
 		s.client.Search.WithPretty(),
 	)
-	defer res.Body.Close()
+
 	if res.IsError() {
 		log.Fatalf("Error: %s", res.String())
 	}
@@ -60,5 +60,6 @@ func (s *LiquorClient) SearchElastic(query map[string]interface{}, output interf
 	if err := json.NewDecoder(res.Body).Decode(&output); err != nil {
 		fmt.Println("Error parsing body", err)
 	}
+	defer res.Body.Close()
 
 }

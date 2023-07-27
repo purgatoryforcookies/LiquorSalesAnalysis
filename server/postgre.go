@@ -38,18 +38,22 @@ func (p *Postgres) FetchStats(itemNumber int) (*LiquorStats, error) {
 	if err != nil {
 		fmt.Println(err)
 	}
+	defer rows.Close()
 
 	got := LiquorStats{}
 	for rows.Next() {
 
-		err = rows.Scan(&got.ItemNumber,
+		if err := rows.Scan(&got.ItemNumber,
 			&got.Price,
 			&got.StoreCount,
 			&got.Liters,
 			&got.BusyStoreId,
 			&got.StoreName,
 			&got.StoreCity,
-		)
+		); err != nil {
+			fmt.Println(err)
+			return nil, err
+		}
 
 		if err != nil {
 			fmt.Println(err)
