@@ -4,7 +4,7 @@ import DeckGL from '@deck.gl/react/typed';
 import { HexagonLayer } from '@deck.gl/aggregation-layers/typed';
 import { Map } from 'react-map-gl';
 import { BASEMAP } from '@deck.gl/carto/typed';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { LinearInterpolator } from '@deck.gl/core/typed';
 import InfoSplash from '../../components/infoSplash/InfoSplash';
 import Hero from '../../components/hero/Hero';
