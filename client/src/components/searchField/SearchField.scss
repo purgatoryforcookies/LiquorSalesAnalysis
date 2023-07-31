@@ -3,10 +3,9 @@
 .searchField__container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
     margin-top: 2rem;
-    width: 100%;
+    width: 50%;
     height: 100%;
 
 
@@ -79,7 +78,7 @@
     }
 
     .searchField__results:not(.closed){
-        height: 100vh;
+        height: 50vh;
 
         ul{
             li{
@@ -92,3 +91,15 @@
 
 }
 
+@media only screen and (max-width: variables.$breakpoint-md) {
+
+    .searchField__container{
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }    
+
+    .searchField__results:not(.closed){
+        height: 90vh;
+    }
+}
