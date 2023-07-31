@@ -3,10 +3,12 @@
 .searchField__container{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
-    width: 400px;
+    width: 100%;
     height: 100%;
+
 
     input{
         width: 23rem;
@@ -23,7 +25,8 @@
         font-weight: 500;
     }
     input:focus {
-        outline:1px solid #333030 !important;
+        outline:1px solid #333030;
+        outline-style: initial;
 
     }
 
@@ -76,7 +79,7 @@
     }
 
     .searchField__results:not(.closed){
-        height: 50vh;
+        height: 100vh;
 
         ul{
             li{

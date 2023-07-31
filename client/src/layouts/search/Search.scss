@@ -14,15 +14,10 @@
     .rigth, .left{
         display: flex;
         flex-direction: column;
-
-        
     }
     .left{
-        margin-left: 3rem;
+        margin-left: 2rem;
     }
-
-
-
 }
 
 @media only screen and (max-width: variables.$breakpoint-md) {
@@ -35,6 +30,10 @@
         gap: 4rem;
         align-items: center;
 
+    }
+
+    .left{
+        margin-left: unset;
     }
 
 }
