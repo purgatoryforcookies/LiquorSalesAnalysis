@@ -44,6 +44,8 @@ function Home() {
 
     const transitionInterpolator = new LinearInterpolator(); 
 
+    const isMobile = window.innerWidth < 600 ? false : true;
+
     const layers = [new HexagonLayer({
         id: 'hexagon-layer',
         data: data,
@@ -71,7 +73,7 @@ function Home() {
                 controller={false}
                 layers={layers}
                 viewState={viewState}
-                onAfterRender={rotateCamera}
+                onAfterRender={ isMobile ? rotateCamera : undefined}
                 onViewStateChange={v => updateViewState(v.viewState)}
                 style={{ zIndex: "-1", filter: "brightness(1)"}}
                 
