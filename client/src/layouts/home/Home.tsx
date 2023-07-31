@@ -4,7 +4,7 @@ import DeckGL from '@deck.gl/react/typed';
 import { HexagonLayer } from '@deck.gl/aggregation-layers/typed';
 import { Map } from 'react-map-gl';
 import { BASEMAP } from '@deck.gl/carto/typed';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { LinearInterpolator } from '@deck.gl/core/typed';
 import InfoSplash from '../../components/infoSplash/InfoSplash';
 import Hero from '../../components/hero/Hero';
@@ -30,8 +30,11 @@ function Home() {
 
     const [viewState, updateViewState] = useState<Record<string, any>>(INITIAL_VIEW_STATE);
     const [hidden, setHidden] = useState<boolean>(false);
+    const isMobile = window.innerWidth < 600 ? false : true;
+
 
     const rotateCamera = useCallback(() => {
+        if (!isMobile && !hidden) return
         updateViewState(v => ({
             ...v,
             bearing: v.bearing + 0.06,
@@ -40,11 +43,13 @@ function Home() {
             transitionInterpolator,
             onTransitionEnd: rotateCamera
         }));
-    }, []);
+    }, [hidden, isMobile]);
+
+    
 
     const transitionInterpolator = new LinearInterpolator(); 
 
-    const isMobile = window.innerWidth < 600 ? false : true;
+    
 
     const layers = [new HexagonLayer({
         id: 'hexagon-layer',
@@ -73,7 +78,7 @@ function Home() {
                 controller={false}
                 layers={layers}
                 viewState={viewState}
-                onAfterRender={ isMobile ? rotateCamera : undefined}
+                onAfterRender={rotateCamera}
                 onViewStateChange={v => updateViewState(v.viewState)}
                 style={{ zIndex: "-1", filter: "brightness(1)"}}
                 
