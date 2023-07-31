@@ -110,7 +110,7 @@ func (s *Server) handleEngineRequest() http.HandlerFunc {
 
 		statResult, err := s.pgClient.FetchStats(embedResults.Hits.Hits[0].Fields.ProductCode[0])
 		if err != nil {
-			http.Error(w, "Error in the engine", http.StatusNoContent)
+			http.Error(w, "Error in the engine", http.StatusInternalServerError)
 			return
 		}
 
