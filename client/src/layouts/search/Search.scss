@@ -27,13 +27,16 @@
         height: unset;
         display: flex;
         flex-direction: column;
-        gap: 4rem;
+        gap: 0rem;
         align-items: center;
 
+
+        .left{
+            margin-left: unset;
+            margin-right: 1rem;
+        }
     }
 
-    .left{
-        margin-left: unset;
-    }
+
 
 }
