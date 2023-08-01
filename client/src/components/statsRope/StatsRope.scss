@@ -72,18 +72,19 @@
 
     .statsRope__container {
         all: unset;
-        height: auto;
         max-height: 25rem;
         width: 80%;
         position: relative;
 
         display: grid;
-        grid-template-columns: repeat(auto-fill, min(30%, 100px));
-        justify-content: center;
-        align-items: center;
+        grid-template-columns: repeat(auto-fill, min(30%, 140px));
+        justify-content: space-around;
         justify-items: center;
 
-        justify-items: center;
+        .statBox {
+            gap: 0rem;
+
+        }
         
     }
 
