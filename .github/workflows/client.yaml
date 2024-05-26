@@ -1,6 +1,8 @@
 name: Build and deploy client
 
 on:
+  pull_request:
+      branches: ['master']
   push:
     paths:
       - 'client/**'
@@ -19,11 +21,13 @@ jobs:
         working-directory: ./client
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
       
       - name: Intall dependecies
         run: npm ci
@@ -32,10 +36,9 @@ jobs:
         run: npm run build
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: production-files
-          path: ./client/dist
+          path: client/dist
 
 
   deploy:
@@ -43,18 +46,16 @@ jobs:
     timeout-minutes: 4
     needs: build
 
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./client/dist
-      
-      - name: Deploy to Severi
-        uses: easingthemes/ssh-deploy@main
-        env:
-            SSH_PRIVATE_KEY: ${{ secrets.SEVERI_KEY }}
-            SOURCE: "./client/dist"
-            REMOTE_HOST: ${{ secrets.SEVERI_HOST }}
-            REMOTE_USER: ${{ secrets.SEVERI_USER }}
-            TARGET: ${{ secrets.SEVERI_CLIENT_TARGET }}
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

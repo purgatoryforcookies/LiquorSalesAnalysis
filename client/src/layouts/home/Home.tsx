@@ -21,9 +21,8 @@ const INITIAL_VIEW_STATE = {
     latitude: 42.00199542737385,
     zoom: 7,
     pitch: 60,
-    bearing: 0
+    bearing: 0,
 };
-
 
 
 function Home() {
@@ -38,7 +37,6 @@ function Home() {
         updateViewState(v => ({
             ...v,
             bearing: v.bearing + 0.06,
-            //   pitch: v.pitch,
             transitionDuration: 12,
             transitionInterpolator,
             onTransitionEnd: rotateCamera
@@ -51,7 +49,7 @@ function Home() {
 
     
 
-    const layers = [new HexagonLayer({
+    const layers = useCallback(()=> [new HexagonLayer({
         id: 'hexagon-layer',
         data: data,
         pickable: false,
@@ -69,21 +67,21 @@ function Home() {
         elevationRange: [0, 170000],
         getElevationScale: (d:{liters:number}) => d.liters,
         getPosition: d => d.coords,
-    })];
+    })],[hidden])
 
     return (
         <div className={!hidden ? 'home__container' : 'home__container hidden'}>
             <DeckGL
                 initialViewState={INITIAL_VIEW_STATE}
                 controller={false}
-                layers={layers}
+                layers={layers()}
                 viewState={viewState}
                 onAfterRender={rotateCamera}
                 onViewStateChange={v => updateViewState(v.viewState)}
                 style={{ zIndex: "-1", filter: "brightness(1)"}}
                 
             >
-                <Map mapStyle={BASEMAP.DARK_MATTER} />
+                <Map mapStyle={BASEMAP.DARK_MATTER} reuseMaps={true} />
             </DeckGL >
             <div className="eyeIcon" onClick={() => setHidden(!hidden)}>
                 {hidden ? <AiFillEye color='white' /> : <AiFillEyeInvisible color='white' />}
