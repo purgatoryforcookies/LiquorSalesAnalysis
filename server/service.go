@@ -14,7 +14,7 @@ type Server struct {
 	pgClient *Postgres
 }
 
-func NewServer(elaConnection *LiquorClient, pgConnection *Postgres) *Server {
+func NewServer(elaConnection *LiquorClient, pgConnection *Postgres, port string) *Server {
 	s := &Server{
 		Router:   mux.NewRouter(),
 		liquor:   elaConnection,
@@ -22,7 +22,7 @@ func NewServer(elaConnection *LiquorClient, pgConnection *Postgres) *Server {
 	}
 	s.router()
 
-	fmt.Println("Server started and listening")
+	fmt.Println("Server started and listening", port)
 
 	return s
 }
