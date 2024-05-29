@@ -13,4 +13,5 @@ FROM scratch
 WORKDIR /home/appuser
 COPY --from=builder app/bin/server/ .
 
+
 ENTRYPOINT  ["./server"]

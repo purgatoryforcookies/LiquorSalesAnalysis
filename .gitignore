@@ -13,3 +13,4 @@ server/bin
 __pycache__
 server/bin
 *.conf
+certs

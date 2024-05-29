@@ -1,107 +1,98 @@
-@use '../../variables';
+@use "../../variables";
 
-.searchField__container{
+.searchField__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  width: 50%;
+  height: 100%;
+  margin-left: 5rem;
+
+  input {
+    width: 23rem;
+    height: 3.2rem;
+    font-size: 1.375rem;
+    letter-spacing: 0.1rem;
+    border-radius: 8px;
+    padding: 3px 0px 3px 10px;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    font-family: inherit;
+    box-shadow: 5px 5px 5px 0px #b9b6b6;
+    color: #333030;
+    font-weight: 500;
+  }
+  input:focus {
+    outline: 1px solid #333030;
+    outline-style: initial;
+  }
+
+  .searchField__results {
+    color: #2d2c2c;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 2rem;
-    width: 50%;
-    height: 100%;
-    margin-left: 5rem;
+    width: 100%;
+    height: 0;
+    transition: 0.4s ease-in-out;
+    overflow: hidden;
 
+    ul {
+      position: relative;
+      right: 0;
+      overflow: hidden;
+      width: 100%;
 
-    input{
-        width: 23rem;
-        height: 3.2rem;
-        font-size: 1.375rem;
-        letter-spacing: 0.10rem;
-        border-radius: 8px;
-        padding: 3px 0px 3px 10px;
-        border: 0;
-        border-bottom:1px solid #eee;
-        font-family:inherit;
-        box-shadow: 5px 5px 5px 0px #B9B6B6;
-        color: #333030;
+      li {
+        position: relative;
+        padding: 8px 2px;
+        font-size: 1.3rem;
         font-weight: 500;
-    }
-    input:focus {
-        outline:1px solid #333030;
-        outline-style: initial;
-
-    }
-
-    .searchField__results{
-        color: #2d2c2c;
-        display: flex;
-        width: 100%;
-        height: 0;
-        transition: 0.4s ease-in-out;
+        line-height: 1.2rem;
+        letter-spacing: 0.3rem;
+        opacity: 1;
+        transition: opacity 0.5s;
         overflow: hidden;
 
-        ul{
-            position: relative;
-            right: 0;
-            overflow: hidden;
-            width: 100%;
-
-            li{
-                position: relative;
-                padding: 8px 2px;
-                font-size: 1.3rem;
-                font-weight: 500;
-                line-height: 1.2rem;
-                letter-spacing: 0.3rem;
-                opacity: 1;
-                transition: opacity 0.5s;
-                overflow: hidden;
-
-                p{
-                    font-size: 1.2rem;
-                    letter-spacing: 0.1rem;
-                    margin-top: 0.5rem;
-                }
-                
-
-                #liters{
-                    letter-spacing: 0.06rem;
-                    font-size: 1rem;
-                }
-            
-            }
-
-            li:hover{
-                cursor: pointer;
-                border-bottom: 1px solid #2d2c2c;
-                font-weight: 800;
-                
-            }
-        }
-    }
-
-    .searchField__results:not(.closed){
-        height: 50vh;
-
-        ul{
-            li{
-                opacity: 1;
-            }
+        p {
+          font-size: 1.2rem;
+          letter-spacing: 0.1rem;
+          margin-top: 0.5rem;
         }
 
+        #liters {
+          letter-spacing: 0.06rem;
+          font-size: 1rem;
+        }
+      }
 
+      li:hover {
+        cursor: pointer;
+        border-bottom: 1px solid #2d2c2c;
+        font-weight: 800;
+      }
     }
+  }
 
+  .searchField__results:not(.closed) {
+    height: 50vh;
+
+    ul {
+      li {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: variables.$breakpoint-md) {
+  .searchField__container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 0rem;
+  }
 
-    .searchField__container{
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-left: 0rem;
-    }    
-
-    .searchField__results:not(.closed){
-        height: auto;
-    }
+  .searchField__results:not(.closed) {
+    height: auto;
+  }
 }

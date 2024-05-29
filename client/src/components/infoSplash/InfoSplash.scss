@@ -1,43 +1,37 @@
-@use '../../variables';
+@use "../../variables";
 
-.infosplash__container::before{
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: -2px;
-    -webkit-backdrop-filter: blur( 8px );
-    backdrop-filter: blur( 8px );
-    border: 1px solid #9c9a9a;
-    border-radius: 0.75rem;
-
+.infosplash__container::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid #9c9a9a;
+  border-radius: 0.75rem;
 }
 
-
-.infosplash__container{
-
-    width: 32.9375rem;
-    height: 28.875rem;
-    border-radius: 0.75rem;
-    background: hsla(180, 2%, 36%, 0.229);
-    position: absolute;
-    top: 15rem;
-    right: 8.375rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10%;
-    padding-top: 2.5rem;
+.infosplash__container {
+  width: 32.9375rem;
+  height: 28.875rem;
+  border-radius: 0.75rem;
+  background: hsla(180, 2%, 36%, 0.229);
+  position: absolute;
+  top: 15rem;
+  right: 8.375rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10%;
+  padding-top: 2.5rem;
 }
-
 
 @media only screen and (max-width: variables.$breakpoint-md) {
-
-    .infosplash__container{
-        height: 30rem;
-        position: relative;
-        top: unset;
-        right: unset;
-    }
+  .infosplash__container {
+    height: 30rem;
+    position: relative;
+    top: unset;
+    right: unset;
+  }
 }
-

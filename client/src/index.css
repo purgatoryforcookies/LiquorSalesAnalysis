@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -11,28 +11,24 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   font-size: 12px;
-
-
 }
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;    
-  box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body{
+body {
   overflow: hidden;
   position: relative;
 }
 
-ul{
+ul {
   list-style: none;
 }
-li{
+li {
   text-decoration: none;
 }
-

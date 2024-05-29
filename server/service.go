@@ -14,7 +14,7 @@ type Server struct {
 	pgClient *Postgres
 }
 
-func NewServer(elaConnection *LiquorClient, pgConnection *Postgres, port string) *Server {
+func NewServer(elaConnection *LiquorClient, pgConnection *Postgres) *Server {
 	s := &Server{
 		Router:   mux.NewRouter(),
 		liquor:   elaConnection,
@@ -22,14 +22,20 @@ func NewServer(elaConnection *LiquorClient, pgConnection *Postgres, port string)
 	}
 	s.router()
 
-	fmt.Println("Server started and listening", port)
-
 	return s
 }
 
 func (s *Server) router() {
+
 	s.HandleFunc("/elapi/search", s.handleQuickSearch()).Methods("GET")
 	s.HandleFunc("/elapi/engine", s.handleEngineRequest()).Methods("GET")
+	s.HandleFunc("/", s.health()).Methods("GET")
+}
+
+func (s *Server) health() http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		fmt.Fprintf(w, "Hello, World!")
+	}
 }
 
 func (s *Server) handleQuickSearch() http.HandlerFunc {

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="black" />
     <title>Iowa Situtation</title>
@@ -12,14 +15,17 @@
   <body>
     <div id="root"></div>
     <script>
-      if ('serviceWorker' in navigator) {
+      if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("/LiquorSalesAnalysis/cacheWorker.js", {
             type: "module",
             scope: "/LiquorSalesAnalysis/",
           })
           .then((registration) => {
-            console.log("Service Worker registered with scope:", registration.scope);
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope,
+            );
           })
           .catch((error) => {
             console.log("Service Worker registration failed:", error);

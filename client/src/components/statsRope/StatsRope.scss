@@ -1,7 +1,56 @@
-@use '../../variables';
+@use "../../variables";
 
 .statsRope__container::before {
-    content: '';
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  backdrop-filter: blur(8px);
+  background: hsla(180, 2%, 36%, 0.229);
+  border-radius: 0.75rem;
+  border: 1px solid #b8b8b8;
+}
+
+.statsRope__container {
+  height: 7.56rem;
+  width: 98rem;
+  border-radius: 0.75rem;
+
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .statBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    aspect-ratio: 1/1;
+    padding: 4px;
+    gap: 1rem;
+
+    :first-child {
+      color: #f3f2f2;
+      font-size: 1.5rem;
+    }
+
+    :nth-child(2) {
+      color: #d4d0d0;
+      font-size: 1.125rem;
+    }
+  }
+}
+
+@media only screen and (max-width: variables.$breakpoint-md) {
+  .statsRope__container::before {
+    content: "";
     height: 100%;
     width: 100%;
     position: absolute;
@@ -9,83 +58,22 @@
     backdrop-filter: blur(8px);
     background: hsla(180, 2%, 36%, 0.229);
     border-radius: 0.75rem;
-    border: 1px solid #B8B8B8
-}
+    border: 1px solid #b8b8b8;
+  }
 
+  .statsRope__container {
+    all: unset;
+    max-height: 25rem;
+    width: 80%;
+    position: relative;
 
-
-.statsRope__container {
-
-    height: 7.56rem;
-    width: 98rem;
-    border-radius: 0.75rem;
-
-    position: absolute;
-    bottom: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(30%, 140px));
     justify-content: space-around;
+    justify-items: center;
 
     .statBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        aspect-ratio: 1/1;
-        padding: 4px;
-        gap: 1rem;
-
-        :first-child {
-            color: #F3F2F2;
-            font-size: 1.5rem;
-
-        }
-
-        :nth-child(2) {
-            color: #d4d0d0;
-            font-size: 1.125rem;
-        }
-
+      gap: 0rem;
     }
-
-
-}
-
-@media only screen and (max-width: variables.$breakpoint-md) {
-
-    .statsRope__container::before {
-        content: '';
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: -2px;
-        backdrop-filter: blur(8px);
-        background: hsla(180, 2%, 36%, 0.229);
-        border-radius: 0.75rem;
-        border: 1px solid #B8B8B8
-    }
-
-
-    .statsRope__container {
-        all: unset;
-        max-height: 25rem;
-        width: 80%;
-        position: relative;
-
-        display: grid;
-        grid-template-columns: repeat(auto-fill, min(30%, 140px));
-        justify-content: space-around;
-        justify-items: center;
-
-        .statBox {
-            gap: 0rem;
-
-        }
-        
-    }
-
+  }
 }
