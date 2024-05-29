@@ -1,128 +1,106 @@
-@use '../../variables';
+@use "../../variables";
 
 .recommendations__container {
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02063rem;
+    padding: 2rem;
+  }
 
-    h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 2rem;
 
-        font-size: 2rem;
-        font-weight: 500;
-        letter-spacing: -0.02063rem;
-        padding: 2rem;
-    }
-
+  .row {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 1rem;
-    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.4rem;
 
-    .row {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 0.4rem;
-
-        .categoryHiglight {
-            border: 1px solid #333030;
-            border-radius: 10px;
-        }
-
-
-        .categoryHiglight::before {
-            content: 'Same category';
-            position: absolute;
-            right: -1.5rem;
-            top: 12rem;
-            background-color: #333030;
-            color: white;
-            padding: 0.5rem;
-            width: 15rem;
-            opacity: 0;
-            transition: 0.3s all;
-        }
+    .categoryHiglight {
+      border: 1px solid #333030;
+      border-radius: 10px;
     }
 
-    .row:hover {
-        font-weight: 600;
-
-        .categoryHiglight::before {
-            right: 45rem;
-            opacity: 1;
-        }
-
-
+    .categoryHiglight::before {
+      content: "Same category";
+      position: absolute;
+      right: -1.5rem;
+      top: 12rem;
+      background-color: #333030;
+      color: white;
+      padding: 0.5rem;
+      width: 15rem;
+      opacity: 0;
+      transition: 0.3s all;
     }
+  }
 
+  .row:hover {
+    font-weight: 600;
 
-    .row>p:first-child {
-        width: 3rem;
-        height: 1.8rem;
-        font-size: 1.4rem;
-        text-align: center;
-
+    .categoryHiglight::before {
+      right: 50rem;
+      opacity: 1;
     }
+  }
 
+  .row > p:first-child {
+    width: 3rem;
+    height: 1.8rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
 
+  .row > p:nth-child(2) {
+    width: 50%;
+    font-size: 1.2rem;
+    text-align: left;
+    position: relative;
+    top: 0.3rem;
+  }
 
-    .row>p:nth-child(2) {
-        width: 50%;
-        font-size: 1.2rem;
-        text-align: left;
-        position: relative;
-        top: 0.3rem;
+  .score {
+    border-bottom: 8px solid #333030;
+    position: relative;
+    bottom: 0.6rem;
+
+    p {
+      position: absolute;
+      right: 0.8rem;
+      bottom: 0.1rem;
+      font-size: 1.2rem;
     }
-
-    .score {
-        border-bottom: 8px solid #333030;
-        border-bottom-right-radius: 8px;
-        position: relative;
-        bottom: 0.6rem;
-
-        p {
-            position: absolute;
-            right: 0.8rem;
-            bottom: 0.1rem;
-            font-size: 1.2rem;
-        }
-
-    }
-
-
-
+  }
 }
 
 @media only screen and (max-width: variables.$breakpoint-md) {
-    .recommendations__container {
-        width: 100%;
-        flex-direction: column;
-        margin-left: 2rem;
-        margin-bottom: 15rem;
-        margin-top: 0;
+  .recommendations__container {
+    width: 100%;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-bottom: 15rem;
+    margin-top: 0;
 
-        .row {
-
-            .categoryHiglight::before {
-                content: 'Same category';
-                position: absolute;
-                top: 28rem;
-                left: -50rem;
-                height: 2rem;
-
-            }
-        }
-
-        .row:hover {
-            font-weight: 600;
-    
-            .categoryHiglight::before {
-                left: 2rem;
-                opacity: 1;
-            }
-    
-    
-        }
-
-
+    .row {
+      .categoryHiglight::before {
+        content: "Same category";
+        position: absolute;
+        top: 10rem;
+        left: -50rem;
+        height: 2rem;
+      }
     }
+    .row:hover {
+      font-weight: 600;
 
+      .categoryHiglight::before {
+        left: 2rem;
+        opacity: 1;
+      }
+    }
+  }
 }

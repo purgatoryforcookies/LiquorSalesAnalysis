@@ -12,3 +12,5 @@ server/bin
 *.env
 __pycache__
 server/bin
+*.conf
+certs

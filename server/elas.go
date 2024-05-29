@@ -21,9 +21,11 @@ func NewLiquorConnection(idx string) *LiquorClient {
 		log.Fatalf("Error creating the client: %s", err)
 		return nil
 	}
+
 	res, err := es.Info()
 	if err != nil {
-		log.Fatalf("Error getting response: %s", err)
+		fmt.Println("Error while pinging hello.", err)
+		panic(err)
 	}
 	defer res.Body.Close()
 

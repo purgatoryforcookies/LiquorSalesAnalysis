@@ -22,14 +22,20 @@ func NewServer(elaConnection *LiquorClient, pgConnection *Postgres) *Server {
 	}
 	s.router()
 
-	fmt.Println("Server started and listening")
-
 	return s
 }
 
 func (s *Server) router() {
+
 	s.HandleFunc("/elapi/search", s.handleQuickSearch()).Methods("GET")
 	s.HandleFunc("/elapi/engine", s.handleEngineRequest()).Methods("GET")
+	s.HandleFunc("/", s.health()).Methods("GET")
+}
+
+func (s *Server) health() http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		fmt.Fprintf(w, "Hello, World!")
+	}
 }
 
 func (s *Server) handleQuickSearch() http.HandlerFunc {
