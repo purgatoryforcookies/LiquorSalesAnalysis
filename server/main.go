@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/tls"
 	"fmt"
 	"log"
 	"net/http"
@@ -16,7 +15,7 @@ func main() {
 
 	certManager := autocert.Manager{
 		Prompt:     autocert.AcceptTOS,
-		HostPolicy: autocert.HostWhitelist("purgatoryforcookies.com"),
+		HostPolicy: autocert.HostWhitelist("purgatoryforcookies.com", "www.purgatoryforcookies.com"),
 		Cache:      autocert.DirCache("certs"),
 	}
 
@@ -31,16 +30,16 @@ func main() {
 
 	server := NewServer(liquorClient, pgClient)
 
+	certManager.TLSConfig().ServerName = "purgatoryforcookies.com"
+
 	tlsServer := &http.Server{
-		Addr: "0.0.0.0:https",
-		TLSConfig: &tls.Config{
-			GetCertificate: certManager.GetCertificate,
-		},
-		Handler: handlers.LoggingHandler(os.Stdout, limit(server)),
+		Addr:      ":https",
+		TLSConfig: certManager.TLSConfig(),
+		Handler:   handlers.LoggingHandler(os.Stdout, limit(server)),
 	}
 
 	go func() {
-		if err := http.ListenAndServe("0.0.0.0:http", certManager.HTTPHandler(nil)); err != nil {
+		if err := http.ListenAndServe(":http", certManager.HTTPHandler(nil)); err != nil {
 			log.Fatal(err)
 		}
 	}()
