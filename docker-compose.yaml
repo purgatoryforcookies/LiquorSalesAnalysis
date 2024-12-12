@@ -4,9 +4,7 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     container_name: elasticsearch
     volumes:
-      - ./elasticsearch-data:/usr/share/elasticsearch/data
-      - ./elasticsearch-data/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./elasticsearch-data/backup:/usr/share/elasticsearch/backup
+      - liquor:/usr/share/elasticsearch/data
     ports:
       - ${ES_PORT}:9200
     restart: always
@@ -42,7 +40,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: db
     ports:
-      - 5432:5432
+      - ${DB_PORT}:5432
     
   server:
     container_name: server
@@ -61,3 +59,5 @@ services:
       - POSTGRES_HOST=db
     restart: always
 
+volumes:
+  liquor:
