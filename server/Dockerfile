@@ -13,6 +13,6 @@ FROM scratch
 
 WORKDIR /home/appuser
 COPY --from=builder app/bin/server/ .
-WORKDIR certs
 
-ENTRYPOINT  ["../server"]
+
+ENTRYPOINT  ["./server"]

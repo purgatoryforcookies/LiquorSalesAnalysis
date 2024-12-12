@@ -6,18 +6,10 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gorilla/handlers"
 	_ "github.com/lib/pq"
-	"golang.org/x/crypto/acme/autocert"
 )
 
 func main() {
-
-	certManager := autocert.Manager{
-		Prompt:     autocert.AcceptTOS,
-		HostPolicy: autocert.HostWhitelist("purgatoryforcookies.com", "www.purgatoryforcookies.com"),
-		Cache:      autocert.DirCache("certs"),
-	}
 
 	connStr := fmt.Sprintf("postgresql://%s:%s@%s/%s?sslmode=disable",
 		os.Getenv("POSTGRES_USER"),
@@ -30,20 +22,10 @@ func main() {
 
 	server := NewServer(liquorClient, pgClient)
 
-	certManager.TLSConfig().ServerName = "purgatoryforcookies.com"
+	portStr := fmt.Sprintf(":%s", os.Getenv("SERVER_PORT"))
 
-	tlsServer := &http.Server{
-		Addr:      ":https",
-		TLSConfig: certManager.TLSConfig(),
-		Handler:   handlers.LoggingHandler(os.Stdout, limit(server)),
+	if err := http.ListenAndServe(portStr, server); err != nil {
+		log.Fatal(err)
 	}
-
-	go func() {
-		if err := http.ListenAndServe(":http", certManager.HTTPHandler(nil)); err != nil {
-			log.Fatal(err)
-		}
-	}()
-	fmt.Println("Liquor server is running...")
-	log.Fatal(tlsServer.ListenAndServeTLS("", ""))
 
 }

@@ -34,7 +34,7 @@ func (s *Server) router() {
 
 func (s *Server) health() http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Hello, World!")
+		fmt.Fprintf(w, "Healthy!")
 	}
 }
 
