@@ -11,6 +11,7 @@ class DataLink:
                  host='localhost',
                  adapter="postgresql",
                  poolSize=20,
+                 port=5432,
                  overflow=5,
                  commit=False,
                  flush=False,
@@ -20,6 +21,7 @@ class DataLink:
             username=username,
             password=password,
             host=host,
+            port=port,
             database=database,
         )
         
