@@ -50,7 +50,10 @@ services:
         limits:
           cpus: "1"
           memory: 2000M
-    
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+
+
   server:
     container_name: server
     build: ./server
@@ -76,3 +79,4 @@ services:
 
 volumes:
   liquor:
+  pgdata:
