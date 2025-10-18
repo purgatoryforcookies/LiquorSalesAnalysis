@@ -22,9 +22,7 @@ func main() {
 
 	server := NewServer(liquorClient, pgClient)
 
-	portStr := fmt.Sprintf(":%s", os.Getenv("SERVER_PORT"))
-
-	if err := http.ListenAndServe(portStr, server); err != nil {
+	if err := http.ListenAndServe(":3000", server); err != nil {
 		log.Fatal(err)
 	}
 
